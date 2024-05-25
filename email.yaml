@@ -1,0 +1,5 @@
+payload:
+- DST-PORT,25
+- DST-PORT,143
+- DST-PORT,587
+- DST-PORT,993
