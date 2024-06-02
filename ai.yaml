@@ -1,0 +1,7 @@
+# Google gemini
+- DOMAIN,gemini.google.com
+- DOMAIN,aida.googleapis.com
+
+# Chatgpt
+- DOMAIN-SUFFIX,openai.com
+- DOMAIN-SUFFIX,chatgpt.com
