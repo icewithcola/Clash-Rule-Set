@@ -1,3 +1,4 @@
+payload:
 # Google gemini
 - DOMAIN,gemini.google.com
 - DOMAIN,aida.googleapis.com
