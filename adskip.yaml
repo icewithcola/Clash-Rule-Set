@@ -1,0 +1,7 @@
+payload:
+# QQ connects these domains infinitely
+- DOMAIN,aegis.qq.com
+- DOMAIN,aeventlog.beacon.qq.com
+- DOMAIN,log.tbs.qq.com
+- DOMAIN,otheve.beacon.qq.com
+- DOMAIN,oth.eve.mdt.qq.com
