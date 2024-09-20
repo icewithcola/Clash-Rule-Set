@@ -2,3 +2,6 @@ payload:
 # Used on sync AOSP source
 - DOMAIN,storage.googleapis.com
 - DOMAIN,android.googlesource.com
+
+# NixOS Cache use a lot of traffic
+- DOMAIN,cache.nixos.org
