@@ -1,3 +1,3 @@
 payload:
-- DOMAIN,dl.acm.org
-- DOMAIN,ieeexplore.ieee.org
+  - 'dl.acm.org'
+  - 'ieeexplore.ieee.org'

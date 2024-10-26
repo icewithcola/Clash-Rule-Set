@@ -1,13 +1,18 @@
 # About this Repo
 This repo is for my personal rules in clash, supporting most variants.\
-All yamls without any hint of types (below) should have [classical](https://wiki.metacubex.one/config/rule-providers/content/#classical) behaviors
 
 # Types
 |File Name|Behavior|
 |---|---|
+|`adskip.yaml`|domain|
+|`ai.yaml`|domain|
+|`bilibili.yaml`|domain|
 |`cnip6.yaml`|ipcidr|
+|`download.yaml`|domain|
+|`email.yaml`|classical|
 |`feishu.yaml`|domain|
-
+|`scholar.yaml`|domain|
+|`telegram.yaml`|ipcidr|
 # Links
 `https://raw.githubusercontent.com/icewithcola/Clash-Rule-Set/master/file`
 

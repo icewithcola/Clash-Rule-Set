@@ -1,13 +1,12 @@
 payload:
-- PROCESS-NAME,tv.danmaku.bili
-- DOMAIN,apiintl.biliapi.net
-- DOMAIN,bilibili.com
-- DOMAIN-SUFFIX,acgvideo.com
-- DOMAIN-SUFFIX,b23.tv
-- DOMAIN-SUFFIX,biliapi.com
-- DOMAIN-SUFFIX,biliapi.net
-- DOMAIN-SUFFIX,bilibili.com
-- DOMAIN-SUFFIX,bilibili.tv
-- DOMAIN-SUFFIX,bilivideo.cn
-- DOMAIN-SUFFIX,bilivideo.com
-- DOMAIN-SUFFIX,smtcdns.net
+  - 'apiintl.biliapi.net'
+  - 'bilibili.com'
+  - '+.acgvideo.com'
+  - '+.b23.tv'
+  - '+.biliapi.com'
+  - '+.biliapi.net'
+  - '+.bilibili.com'
+  - '+.bilibili.tv'
+  - '+.bilivideo.cn'
+  - '+.bilivideo.com'
+  - '+.smtcdns.net'

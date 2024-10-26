@@ -1,8 +1,8 @@
 payload:
 # Google gemini
-- DOMAIN,gemini.google.com
-- DOMAIN,aida.googleapis.com
+  - 'gemini.google.com'
+  - 'aida.googleapis.com'
 
 # Chatgpt
-- DOMAIN-SUFFIX,openai.com
-- DOMAIN-SUFFIX,chatgpt.com
+  - '+.openai.com'
+  - '+.chatgpt.com'
