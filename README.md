@@ -1,6 +1,12 @@
 # About this Repo
 This repo is for my personal rules in clash, supporting most variants.\
-All yamls should have [classical](https://wiki.metacubex.one/config/rule-providers/content/#classical) behaviors
+All yamls without any hint of types (below) should have [classical](https://wiki.metacubex.one/config/rule-providers/content/#classical) behaviors
+
+# Types
+|File Name|Type|
+|---|---|
+|`cnip6.yaml`|ipcidr|
+
 # Links
 `https://raw.githubusercontent.com/icewithcola/Clash-Rule-Set/master/file`
 
