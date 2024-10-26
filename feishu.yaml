@@ -1,37 +1,37 @@
 payload:
-- DOMAIN-SUFFIX,feishu.net
-- DOMAIN-SUFFIX,feishu.cn
-- DOMAIN-SUFFIX,larkoffice.com
-- DOMAIN-SUFFIX,feishucdn.com 
-- DOMAIN-SUFFIX,zjurl.cn 
-- DOMAIN-SUFFIX,snssdk.com 
-- DOMAIN-SUFFIX,pstatp.com 
-- DOMAIN-SUFFIX,byteimg.com 
-- DOMAIN-SUFFIX,bytedance.net 
-- DOMAIN-SUFFIX,bytedance.com 
-- DOMAIN-SUFFIX,byted-static.com 
-- DOMAIN-SUFFIX,bytegoofy.com 
-- DOMAIN-SUFFIX,feishu-3rd-party-services.com
-- DOMAIN-SUFFIX,bytehwm.com 
-- DOMAIN-SUFFIX,ttwebview.com 
-- DOMAIN-SUFFIX,bytegecko.com 
-- DOMAIN-SUFFIX,bytescm.com 
-- DOMAIN-SUFFIX,kundou.cn 
-- DOMAIN-SUFFIX,bytetos.com 
-- DOMAIN-SUFFIX,zijieapi.com 
-- DOMAIN-SUFFIX,byteeffecttos.com 
-- DOMAIN-SUFFIX,bytednsdoc.com 
-- DOMAIN-SUFFIX,bytedanceapi.com 
-- DOMAIN-SUFFIX,volcvideo.com 
-- DOMAIN-SUFFIX,feishuimg.com 
-- DOMAIN-SUFFIX,feishuapp.cn 
-- DOMAIN-SUFFIX,getfeishu.cn 
-- DOMAIN-SUFFIX,feishupkg.com  
-- DOMAIN-SUFFIX,feelgood.cn
-- DOMAIN-SUFFIX,baseopendev.com
-- DOMAIN-SUFFIX,bytedance.com
-- DOMAIN-SUFFIX,bytevcloud.com
-- DOMAIN,lf3-effectcdn-tos.byteeffecttos.com
-- DOMAIN,lf6-effectcdn-tos.byteeffecttos.com
-- DOMAIN,lf9-effectcdn-tos.byteeffecttos.com
-- DOMAIN,effect.snssdk.com
+  - '+.feishu.net'
+  - '+.feishu.cn'
+  - '+.larkoffice.com'
+  - '+.feishucdn.com'
+  - '+.zjurl.cn'
+  - '+.snssdk.com'
+  - '+.pstatp.com'
+  - '+.byteimg.com'
+  - '+.bytedance.net'
+  - '+.bytedance.com'
+  - '+.byted-static.com'
+  - '+.bytegoofy.com'
+  - '+.feishu-3rd-party-services.com'
+  - '+.bytehwm.com'
+  - '+.ttwebview.com'
+  - '+.bytegecko.com'
+  - '+.bytescm.com'
+  - '+.kundou.cn'
+  - '+.bytetos.com'
+  - '+.zijieapi.com'
+  - '+.byteeffecttos.com'
+  - '+.bytednsdoc.com'
+  - '+.bytedanceapi.com'
+  - '+.volcvideo.com'
+  - '+.feishuimg.com'
+  - '+.feishuapp.cn'
+  - '+.getfeishu.cn'
+  - '+.feishupkg.com'
+  - '+.feelgood.cn'
+  - '+.baseopendev.com'
+  - '+.bytedance.com'
+  - '+.bytevcloud.com'
+  - 'lf3-effectcdn-tos.byteeffecttos.com'
+  - 'lf6-effectcdn-tos.byteeffecttos.com'
+  - 'lf9-effectcdn-tos.byteeffecttos.com'
+  - 'effect.snssdk.com'

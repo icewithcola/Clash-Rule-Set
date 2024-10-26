@@ -3,9 +3,10 @@ This repo is for my personal rules in clash, supporting most variants.\
 All yamls without any hint of types (below) should have [classical](https://wiki.metacubex.one/config/rule-providers/content/#classical) behaviors
 
 # Types
-|File Name|Type|
+|File Name|Behavior|
 |---|---|
 |`cnip6.yaml`|ipcidr|
+|`feishu.yaml`|domain|
 
 # Links
 `https://raw.githubusercontent.com/icewithcola/Clash-Rule-Set/master/file`
