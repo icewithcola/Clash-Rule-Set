@@ -6,3 +6,4 @@ payload:
 # Chatgpt
   - '+.openai.com'
   - '+.chatgpt.com'
+  - '+.oaistatic.com'
