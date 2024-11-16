@@ -1,0 +1,14 @@
+payload:
+# Discord
+  - '+.discord.co'
+  - '+.discord.com'
+  - '+.discord.gg'
+  - '+.discord.media'
+  - '+.discordapp.com'
+  - '+.discordapp.net'
+# Twitter
+  - '+.x.com'
+  - '+.t.co'
+  - '+.twimg.co'
+  - '+.twimg.com'
+  - '+.twimg.org'
