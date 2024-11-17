@@ -11,6 +11,7 @@ This repo is for my personal rules in clash, supporting most variants.\
 |`download.yaml`|domain|
 |`email.yaml`|classical|
 |`feishu.yaml`|domain|
+|`microsoft.yaml`|domain|
 |`overseasCommunicate.yaml`|domain|
 |`overseasGame.yaml`|domain|
 |`overseasVideo.yaml`|domain|
