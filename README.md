@@ -8,6 +8,7 @@ This repo is for my personal rules in clash, supporting most variants.\
 |`ai.yaml`|domain|
 |`bilibili.yaml`|domain|
 |`cnip6.yaml`|ipcidr|
+|`doProxy.yaml`|domain|
 |`download.yaml`|domain|
 |`email.yaml`|classical|
 |`feishu.yaml`|domain|

@@ -1,0 +1,5 @@
+# Some sites that needs proxy, this file should be placed first
+payload:
+  - '+.linkedin.com'
+  - '+.onedrive.live.com'
+  - 'ssh.github.com'
