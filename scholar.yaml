@@ -1,3 +1,5 @@
 payload:
   - 'dl.acm.org'
   - 'ieeexplore.ieee.org'
+  - '+.springer.com'
+  - '+.springernature.com'
