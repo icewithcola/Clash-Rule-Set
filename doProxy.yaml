@@ -3,3 +3,4 @@ payload:
   - '+.linkedin.com'
   - '+.onedrive.live.com'
   - 'ssh.github.com'
+  - 'services.googleapis.cn'
