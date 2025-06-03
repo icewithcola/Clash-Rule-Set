@@ -5,3 +5,4 @@ payload:
   - 'ssh.github.com'
   - 'services.googleapis.cn' # Google play
   - '+.googleapis.com'
+  - 'fonts.gstatic.com'
