@@ -3,4 +3,5 @@ payload:
   - '+.linkedin.com'
   - '+.onedrive.live.com'
   - 'ssh.github.com'
-  - 'services.googleapis.cn'
+  - 'services.googleapis.cn' # Google play
+  - '+.googleapis.com'
