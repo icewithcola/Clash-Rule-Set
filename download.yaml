@@ -8,3 +8,6 @@ payload:
 
 # Used by ollama
   - 'dd20bb891979d25aebc8bec07b2b3bbc.r2.cloudflarestorage.com'
+
+# Some speed tests
+  - 'speed.cloudflare.com'
