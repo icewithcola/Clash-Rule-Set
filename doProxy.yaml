@@ -6,3 +6,4 @@ payload:
   - 'services.googleapis.cn' # Google play
   - '+.googleapis.com'
   - 'fonts.gstatic.com'
+  - 'dl.google.com'
