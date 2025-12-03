@@ -8,3 +8,5 @@ payload:
   - 'fonts.gstatic.com'
   - 'dl.google.com'
   - 'www.gstatic.com'
+  - 'www.gstatic.cn'
+  - 'www.recaptcha.net'
