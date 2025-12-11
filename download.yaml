@@ -3,9 +3,6 @@ payload:
   - 'storage.googleapis.com'
   - 'android.googlesource.com'
 
-# NixOS Cache use a lot of traffic
-  - 'cache.nixos.org'
-
 # Used by ollama
   - 'dd20bb891979d25aebc8bec07b2b3bbc.r2.cloudflarestorage.com'
 
