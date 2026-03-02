@@ -22,3 +22,10 @@ payload:
   - 'production-openaicom-storage.azureedge.net'
   - 'o33249.ingest.sentry.io'
   - 'openaicom.imgix.net'
+
+# Claude
+  - '+.anthropic.com'
+  - '+.claude.ai'
+  - '+.claude.com'
+  - '+.claudeusercontent.com'
+  - '+.usefathom.com'
