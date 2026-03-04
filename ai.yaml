@@ -7,6 +7,13 @@ payload:
   - 'generativelanguage.googleapis.com'
   - '+.clients6.google.com'
   - 'makersuite.google.com'
+  # Google Cookie Store
+  # https://doi.org/10.1016/j.cose.2026.104850
+  - 'proactivebackend-pa.googleapis.com' 
+  - 'discover-pa.googleapis.com'
+  - 'android-context-data.googleapis.com'
+  - 'locationhistory-pa.googleapis.com'
+  - 'semanticlocation-pa.googleapis.com'
 
 # Chatgpt
   - '+.openai.com'
