@@ -1,5 +1,5 @@
 # About this Repo
-This repo is for my personal rules in clash, supporting most variants.\
+This repo is for my personal rules in clash, supporting most variants.
 
 # Types
 |File Name|Behavior|
@@ -8,6 +8,7 @@ This repo is for my personal rules in clash, supporting most variants.\
 |`ai.yaml`|domain|
 |`bilibili.yaml`|domain|
 |`cnip6.yaml`|ipcidr|
+|`cn-sites.yaml`|domain|
 |`doProxy.yaml`|domain|
 |`download.yaml`|domain|
 |`email.yaml`|classical|
