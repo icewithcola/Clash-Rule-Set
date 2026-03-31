@@ -36,3 +36,12 @@ payload:
   - '+.claude.com'
   - '+.claudeusercontent.com'
   - '+.usefathom.com'
+
+# Apple Intelligence
+  - 'guzzoni.apple.com'
+  - '+.smoot.apple.com'
+  - 'apple-relay.*.*'
+  - 'apple-relay.*.*.*'
+  - 'gateway.icloud.com'
+  - 'cp4.cloudflare.com'
+  - 'gspe1-ssl.ls.apple.com'
