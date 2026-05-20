@@ -1,8 +1,9 @@
-name: Update Tailscale DERP Rules
+name: Update CN Sites Rules
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Run daily at midnight UTC
+    # 01:30 Beijing time daily (17:30 UTC the previous day).
+    - cron: '30 17 * * *'
   workflow_dispatch: # Allow manual triggers
 
 jobs:
@@ -19,19 +20,22 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Install dependencies
+        run: pip install pyyaml
+
       - name: Generate Rules
         run: |
-          python3 scripts/generate_derp.py
+          python3 scripts/generate_cn_sites.py
 
       - name: Commit and Push
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add tailscale-domain.yaml tailscale-ip.yaml
-          
+          git add cnSites.yaml
+
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Auto-update Tailscale DERP rules"
+            git commit -m "Auto-update CN sites rules"
             git push
           fi
