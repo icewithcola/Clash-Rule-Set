@@ -21,7 +21,12 @@ TARGETS = [
     "bytedance",
     "xiaohongshu",
     "bilibili",
-    "tencent"
+    "tencent",
+    # scholar-cn
+    "cas",
+    "cnki",
+    "chaoxing",
+    "wanfang"
 ]
 
 
