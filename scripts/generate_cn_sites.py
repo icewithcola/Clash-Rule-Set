@@ -22,6 +22,8 @@ TARGETS = [
     "xiaohongshu",
     "bilibili",
     "tencent",
+    "oppo",
+    "xiaomi",
     # scholar-cn
     "cas",
     "cnki",
