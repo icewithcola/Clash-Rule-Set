@@ -17,6 +17,7 @@ This repo holds my personal rule sets for clash. The format works with most clas
 | `overseasCommunicate.yaml` | domain | Overseas chat apps such as Discord. |
 | `overseasGame.yaml` | domain | Overseas game services such as Epic. |
 | `overseasVideo.yaml` | domain | Overseas video sites such as YouTube. |
+| `privacy.yaml` | domain | Privacy-invading native trackers (e.g. OPPO/Realme). Auto-generated daily. |
 | `scholar.yaml` | domain | Academic sites such as IEEE, ACM, Springer. |
 | `tailscale-domain.yaml` | domain | Tailscale DERP relay hostnames. Auto-generated daily. |
 | `tailscale-ip.yaml` | ipcidr | Tailscale DERP relay IPs. Auto-generated daily. |
@@ -31,6 +32,7 @@ https://raw.githubusercontent.com/icewithcola/Clash-Rule-Set/master/<file>
 # Auto Update
 Some files are kept fresh by GitHub Actions:
 - `cnSites.yaml` is built from [v2fly/domain-list-community](https://github.com/v2fly/domain-list-community). Runs daily at 01:30 Beijing time. Script: `scripts/generate_cn_sites.py`.
+- `privacy.yaml` is built from one or more upstream blocklists (OPPO/Realme native trackers by default; configure `URLS` in the script to add more). Runs daily at 02:30 Beijing time. Script: `scripts/generate_privacy.py`.
 - `tailscale-domain.yaml` and `tailscale-ip.yaml` are built from the Tailscale DERP map. Runs daily at 00:00 UTC. Script: `scripts/generate_derp.py`.
 
 You can also run the workflows by hand from the Actions tab.
@@ -46,3 +48,4 @@ Issues and pull requests are welcome. New rules and changes to current rules are
 - `cnSites.yaml`: [v2fly/domain-list-community](https://github.com/v2fly/domain-list-community), filtered to `domain:` rules only and skipping the `@!cn` tag.
 - `tailscale-*.yaml`: [Tailscale DERP map](https://controlplane.tailscale.com/derpmap/default).
 - `adskip.yaml`: a small hand-picked list of ad domains that keep reconnecting.
+- `privacy.yaml`: auto-generated from [hagezi/dns-blocklists](https://github.com/hagezi/dns-blocklists) (currently the OPPO & Realme native tracker list). Add more upstream lists by editing the `URLS` array at the top of `scripts/generate_privacy.py`.
