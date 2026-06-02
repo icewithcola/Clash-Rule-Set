@@ -1413,11 +1413,6 @@ payload:
   - '+.youpin.com.cn'
   - '+.zmifi.com'
 
-# cas
-  - '+.csdl.ac.cn'
-  - '+.iscas.ac.cn'
-  - '+.las.ac.cn'
-
 # cnki
   - '+.chndoi.org'
   - '+.cnki.com.cn'
