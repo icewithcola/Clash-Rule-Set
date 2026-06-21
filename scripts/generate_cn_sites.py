@@ -25,6 +25,7 @@ TARGETS = [
     "oppo",
     "xiaomi",
     "alibaba",
+    "zhihu",
     # scholar-cn
     "cas",
     "cnki",
