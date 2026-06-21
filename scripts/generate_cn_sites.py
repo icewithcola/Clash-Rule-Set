@@ -26,6 +26,10 @@ TARGETS = [
     "xiaomi",
     "alibaba",
     "zhihu",
+    # cloud services
+    "aliyun",
+    "huaweicloud",
+    
     # scholar-cn
     "cas",
     "cnki",
