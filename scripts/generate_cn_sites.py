@@ -26,6 +26,7 @@ TARGETS = [
     "xiaomi",
     "alibaba",
     "zhihu",
+    "meituan",
     # cloud services
     "aliyun",
     "huaweicloud",
