@@ -2,10 +2,11 @@
 """Generate cnSites.yaml from v2fly's domain-list-community release.
 
 For each TARGET in TARGETS, the matching list is located inside
-dlc.dat_plain.yml. Only `domain:` rules are kept, entries tagged with the
+dlc.dat_plain.yml. `domain:` rules are prefixed with `+.` (wildcard),
+and `full:` rules have no prefix (exact match). Entries tagged with the
 `@!cn` attribute (overseas-only) are dropped, any remaining `:@xxx`
-attribute suffix is stripped, and the bare domain is emitted as
-`'+.<domain>'`. Sections are separated by `# <TARGET>` comment headers.
+attribute suffix is stripped. Sections are separated by `# <TARGET>`
+comment headers.
 """
 import sys
 import urllib.error
@@ -27,6 +28,17 @@ TARGETS = [
     "alibaba",
     "zhihu",
     "meituan",
+    
+    # categories
+    "category-ai-cn",
+    "category-bank-cn",
+    "category-cdn-cn",
+    "category-food-cn",
+    "category-media-cn",
+    "category-netdisk-cn",
+    "category-ntp-cn",
+    "category-social-media-cn",
+    
     # cloud services
     "aliyun",
     "huaweicloud",
@@ -61,12 +73,14 @@ def find_list(data: dict[str, Any], name: str) -> Optional[list[str]]:
 def extract_domains(rules: list[str]) -> list[str]:
     domains: list[str] = []
     for rule in rules:
-        # Only `domain:` rules map cleanly to clash's `+.` suffix wildcard.
-        # `full:` is exact-match, `regexp:` is a pattern -- both skipped.
-        if not rule.startswith("domain:"):
+        if rule.startswith("domain:"):
+            prefix = "+."
+            body = rule[len("domain:"):]
+        elif rule.startswith("full:"):
+            prefix = ""
+            body = rule[len("full:"):]
+        else:
             continue
-
-        body = rule[len("domain:"):]
 
         # Body may carry attributes after `:@`, e.g. `foo.com:@!cn,@ads`.
         if ":@" in body:
@@ -84,7 +98,7 @@ def extract_domains(rules: list[str]) -> list[str]:
 
         domain_part = domain_part.strip()
         if domain_part:
-            domains.append(domain_part)
+            domains.append(f"{prefix}{domain_part}")
     return domains
 
 
@@ -97,7 +111,7 @@ def write_cn_sites(path: Path, sections: list[tuple[str, list[str]]]) -> None:
                 f.write("\n")
             f.write(f"# {name}\n")
             for domain in domains:
-                f.write(f"  - '+.{domain}'\n")
+                f.write(f"  - '{domain}'\n")
                 total += 1
     print(f"Successfully wrote {total} domains to {path}.")
 
