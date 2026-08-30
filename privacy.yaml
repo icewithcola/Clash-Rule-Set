@@ -1,5 +1,5 @@
 payload:
-# Region: https://git.kagurach.uk/kagura/hagezi_mirror/raw/branch/main/dns-blocklists/domains/native.oppo-realme.txt
+# Region: https://gitlab.com/hagezi/mirror/-/raw/main/dns-blocklists/domains/native.oppo-realme.txt
   - 'classify-app-eu.allawnos.com'
   - 'classify-app-in.allawnos.com'
   - 'classify-app-sg.allawnos.com'
@@ -573,7 +573,7 @@ payload:
   - 'sea-log-rcv.vansound.com'
   - 'h4g3z1-native.oppo-realme.web.app'
 
-# Region: https://git.kagurach.uk/kagura/hagezi_mirror/raw/branch/main/dns-blocklists/domains/native.xiaomi.txt
+# Region: https://gitlab.com/hagezi/mirror/-/raw/main/dns-blocklists/domains/native.xiaomi.txt
   - 'traffic-media.co.uk'
   - 'mistat.india.xiaomi.com.edgesuite.net'
   - 'ad.intl.xiaomi.com.edgesuite.net'
