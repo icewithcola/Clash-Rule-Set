@@ -17,8 +17,8 @@ from pathlib import Path
 # plain-text file with one domain per line; lines starting with `#`
 # and blank lines are ignored.
 URLS = [
-    "https://git.kagurach.uk/kagura/hagezi_mirror/raw/branch/main/dns-blocklists/domains/native.oppo-realme.txt",  # noqa: E501
-    "https://git.kagurach.uk/kagura/hagezi_mirror/raw/branch/main/dns-blocklists/domains/native.xiaomi.txt",  # noqa: E501
+    "https://gitlab.com/hagezi/mirror/-/raw/main/dns-blocklists/domains/native.oppo-realme.txt",  # noqa: E501
+    "https://gitlab.com/hagezi/mirror/-/raw/main/dns-blocklists/domains/native.xiaomi.txt",  # noqa: E501
 ]
 
 
