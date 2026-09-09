@@ -2,10 +2,11 @@
 """Generate cnSites.yaml from v2fly's domain-list-community release.
 
 For each TARGET in TARGETS, the matching list is located inside
-dlc.dat_plain.yml. `domain:` rules are prefixed with `+.` (wildcard),
-and `full:` rules have no prefix (exact match). Entries tagged with the
-`@!cn` attribute (overseas-only) are dropped, any remaining `:@xxx`
-attribute suffix is stripped. Sections are separated by `# <TARGET>`
+dlc.dat_plain.yml. App-specific sections that do not have their own list are
+read from the upstream geolocation-cn source file. `domain:` rules are
+prefixed with `+.` (wildcard), and `full:` rules have no prefix (exact match).
+Entries tagged with the `@!cn` attribute (overseas-only) are dropped, any
+remaining attributes are stripped. Sections are separated by `# <TARGET>`
 comment headers.
 """
 import sys
@@ -17,6 +18,7 @@ from typing import Any, Optional
 import yaml
 
 LIST_URL = "https://github.com/v2fly/domain-list-community/releases/latest/download/dlc.dat_plain.yml"
+GEOLOCATION_CN_URL = "https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/geolocation-cn"
 
 TARGETS = [
     "bytedance",
@@ -50,17 +52,26 @@ TARGETS = [
     "wanfang"
 ]
 
+# App groups found in data/geolocation-cn but not published as standalone lists.
+# Map the output section name to the upstream level-two heading.
+APP_SECTIONS = {
+    "umetrip": "航旅纵横",
+}
+
+
+def fetch_text(url: str, description: str) -> str:
+    print(f"Fetching {description} from {url}...")
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(req) as response:
+            return response.read().decode()
+    except urllib.error.URLError as e:
+        print(f"Error fetching {description}: {e}")
+        sys.exit(1)
+
 
 def fetch_dlc() -> dict[str, Any]:
-    print(f"Fetching DLC YAML from {LIST_URL}...")
-    try:
-        req = urllib.request.Request(
-            LIST_URL, headers={"User-Agent": "Mozilla/5.0"})
-        with urllib.request.urlopen(req) as response:
-            return yaml.safe_load(response.read().decode())
-    except urllib.error.URLError as e:
-        print(f"Error fetching DLC YAML: {e}")
-        sys.exit(1)
+    return yaml.safe_load(fetch_text(LIST_URL, "DLC YAML"))
 
 
 def find_list(data: dict[str, Any], name: str) -> Optional[list[str]]:
@@ -68,6 +79,24 @@ def find_list(data: dict[str, Any], name: str) -> Optional[list[str]]:
         if entry.get("name") == name:
             return list(entry.get("rules") or [])
     return None
+
+
+def find_source_section(source: str, heading: str) -> Optional[list[str]]:
+    """Return rules under a `## heading` until the next level-two heading."""
+    marker = f"## {heading}"
+    in_section = False
+    rules: list[str] = []
+
+    for raw_line in source.splitlines():
+        line = raw_line.strip()
+        if line.startswith("## "):
+            if in_section:
+                break
+            in_section = line == marker
+        elif in_section and line and not line.startswith("#"):
+            rules.append(line)
+
+    return rules if in_section else None
 
 
 def extract_domains(rules: list[str]) -> list[str]:
@@ -102,6 +131,33 @@ def extract_domains(rules: list[str]) -> list[str]:
     return domains
 
 
+def extract_source_domains(rules: list[str]) -> list[str]:
+    """Convert domain-list-community source rules to Clash domain rules."""
+    domains: list[str] = []
+    for rule in rules:
+        parts = rule.split()
+        body = parts[0]
+        attrs = {part.lstrip("@") for part in parts[1:] if part.startswith("@")}
+        if "!cn" in attrs:
+            continue
+
+        if body.startswith("full:"):
+            prefix = ""
+            domain = body[len("full:"):]
+        elif body.startswith("domain:"):
+            prefix = "+."
+            domain = body[len("domain:"):]
+        elif body.startswith(("include:", "keyword:", "regexp:")):
+            continue
+        else:
+            prefix = "+."
+            domain = body
+
+        if domain:
+            domains.append(f"{prefix}{domain}")
+    return domains
+
+
 def write_cn_sites(path: Path, sections: list[tuple[str, list[str]]]) -> None:
     total = 0
     with open(path, "w", encoding="utf-8") as f:
@@ -128,6 +184,16 @@ def main() -> None:
         domains = extract_domains(rules)
         print(f"  {target}: {len(domains)} domains")
         sections.append((target, domains))
+
+    geolocation_cn = fetch_text(GEOLOCATION_CN_URL, "geolocation-cn source")
+    for app, heading in APP_SECTIONS.items():
+        rules = find_source_section(geolocation_cn, heading)
+        if rules is None:
+            print(f"Warning: app section '{heading}' not found in source.")
+            continue
+        domains = extract_source_domains(rules)
+        print(f"  {app}: {len(domains)} domains")
+        sections.append((app, domains))
 
     output = Path(__file__).resolve().parent.parent / "cnSites.yaml"
     write_cn_sites(output, sections)

@@ -3555,3 +3555,9 @@ payload:
 # wanfang
   - '+.wanfangdata.com.cn'
   - '+.wf.pub'
+
+# umetrip
+  - '+.umetrip.com'
+  - '+.umetrip.com.cn'
+  - '+.umetrip.net.cn'
+  - '+.ume-trip.cn'
