@@ -45,7 +45,7 @@ Issues and pull requests are welcome. New rules and changes to current rules are
 - `feishu.yaml`: [Feishu help page (Chinese)](https://www.feishu.cn/hc/zh-CN/articles/360044683233)
 - `email.yaml`: [Cloudflare: SMTP ports](https://www.cloudflare.com/zh-cn/learning/email-security/smtp-port-25-587/)
 - `cnip6.yaml`: [blackmatrix7/ios_rule_script ChinaMax list](https://github.com/blackmatrix7/ios_rule_script/blob/master/rule/Surge/ChinaMax/README.md)
-- `cnSites.yaml`: [v2fly/domain-list-community](https://github.com/v2fly/domain-list-community), filtered to `domain:` rules only and skipping the `@!cn` tag.
+- `cnSites.yaml`: [v2fly/domain-list-community](https://github.com/v2fly/domain-list-community), including mainland-local automobile, commerce, healthcare, public-transport, logistics, and service groups; filtered to domain rules only and skipping the `@!cn` tag.
 - `tailscale-*.yaml`: [Tailscale DERP map](https://controlplane.tailscale.com/derpmap/default).
 - `adskip.yaml`: a small hand-picked list of ad domains that keep reconnecting.
 - `privacy.yaml`: auto-generated from [hagezi/dns-blocklists](https://github.com/hagezi/dns-blocklists) (currently the OPPO & Realme native tracker list). Add more upstream lists by editing the `URLS` array at the top of `scripts/generate_privacy.py`.

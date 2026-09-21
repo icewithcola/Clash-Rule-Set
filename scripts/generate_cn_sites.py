@@ -2,12 +2,12 @@
 """Generate cnSites.yaml from v2fly's domain-list-community release.
 
 For each TARGET in TARGETS, the matching list is located inside
-dlc.dat_plain.yml. App-specific sections that do not have their own list are
-read from the upstream geolocation-cn source file. `domain:` rules are
-prefixed with `+.` (wildcard), and `full:` rules have no prefix (exact match).
-Entries tagged with the `@!cn` attribute (overseas-only) are dropped, any
-remaining attributes are stripped. Sections are separated by `# <TARGET>`
-comment headers.
+dlc.dat_plain.yml. Broader groups of mainland-local services are read from
+the upstream geolocation-cn source file, including any lists referenced by an
+`include:` rule. `domain:` rules are prefixed with `+.` (wildcard), and
+`full:` rules have no prefix (exact match). Entries tagged with the `@!cn`
+attribute (overseas-only) are dropped, any remaining attributes are stripped.
+Sections are separated by `# <TARGET>` comment headers.
 """
 import sys
 import urllib.error
@@ -33,9 +33,11 @@ TARGETS = [
     
     # categories
     "category-ai-cn",
+    "category-automobile-cn",
     "category-bank-cn",
     "category-cdn-cn",
     "category-food-cn",
+    "category-logistics-cn",
     "category-media-cn",
     "category-netdisk-cn",
     "category-ntp-cn",
@@ -52,10 +54,13 @@ TARGETS = [
     "wanfang"
 ]
 
-# App groups found in data/geolocation-cn but not published as standalone lists.
-# Map the output section name to the upstream level-two heading.
-APP_SECTIONS = {
-    "umetrip": "航旅纵横",
+# Mainland-local groups that do not have a complete standalone `-cn` list.
+# Map the output section name to (upstream heading, heading level).
+SOURCE_SECTIONS = {
+    "local-commerce": ("E-commerce", 1),
+    "local-healthcare": ("Healthcare", 1),
+    "public-transportation": ("Public transportation", 1),
+    "local-services": ("Services & Softwares", 1),
 }
 
 
@@ -81,19 +86,27 @@ def find_list(data: dict[str, Any], name: str) -> Optional[list[str]]:
     return None
 
 
-def find_source_section(source: str, heading: str) -> Optional[list[str]]:
-    """Return rules under a `## heading` until the next level-two heading."""
-    marker = f"## {heading}"
+def find_source_section(
+    source: str, heading: str, level: int
+) -> Optional[list[str]]:
+    """Return rules below a heading until the next same/higher-level heading."""
+    marker = f"{'#' * level} {heading}"
     in_section = False
     rules: list[str] = []
 
     for raw_line in source.splitlines():
         line = raw_line.strip()
-        if line.startswith("## "):
+        heading_marks, separator, _ = line.partition(" ")
+        is_heading = (
+            bool(separator)
+            and heading_marks
+            and set(heading_marks) == {"#"}
+        )
+        if is_heading and len(heading_marks) <= level:
             if in_section:
                 break
             in_section = line == marker
-        elif in_section and line and not line.startswith("#"):
+        elif in_section and line and not is_heading:
             rules.append(line)
 
     return rules if in_section else None
@@ -131,8 +144,10 @@ def extract_domains(rules: list[str]) -> list[str]:
     return domains
 
 
-def extract_source_domains(rules: list[str]) -> list[str]:
-    """Convert domain-list-community source rules to Clash domain rules."""
+def extract_source_domains(
+    rules: list[str], data: dict[str, Any]
+) -> list[str]:
+    """Convert source rules and expanded includes to Clash domain rules."""
     domains: list[str] = []
     for rule in rules:
         parts = rule.split()
@@ -141,13 +156,21 @@ def extract_source_domains(rules: list[str]) -> list[str]:
         if "!cn" in attrs:
             continue
 
+        if body.startswith("include:"):
+            list_name = body[len("include:"):]
+            included_rules = find_list(data, list_name)
+            if included_rules is None:
+                print(f"Warning: included list '{list_name}' not found in source.")
+                continue
+            domains.extend(extract_domains(included_rules))
+            continue
         if body.startswith("full:"):
             prefix = ""
             domain = body[len("full:"):]
         elif body.startswith("domain:"):
             prefix = "+."
             domain = body[len("domain:"):]
-        elif body.startswith(("include:", "keyword:", "regexp:")):
+        elif body.startswith(("keyword:", "regexp:")):
             continue
         else:
             prefix = "+."
@@ -155,11 +178,12 @@ def extract_source_domains(rules: list[str]) -> list[str]:
 
         if domain:
             domains.append(f"{prefix}{domain}")
-    return domains
+    return list(dict.fromkeys(domains))
 
 
 def write_cn_sites(path: Path, sections: list[tuple[str, list[str]]]) -> None:
     total = 0
+    seen: set[str] = set()
     with open(path, "w", encoding="utf-8") as f:
         f.write("payload:\n")
         for idx, (name, domains) in enumerate(sections):
@@ -167,6 +191,9 @@ def write_cn_sites(path: Path, sections: list[tuple[str, list[str]]]) -> None:
                 f.write("\n")
             f.write(f"# {name}\n")
             for domain in domains:
+                if domain in seen:
+                    continue
+                seen.add(domain)
                 f.write(f"  - '{domain}'\n")
                 total += 1
     print(f"Successfully wrote {total} domains to {path}.")
@@ -186,14 +213,14 @@ def main() -> None:
         sections.append((target, domains))
 
     geolocation_cn = fetch_text(GEOLOCATION_CN_URL, "geolocation-cn source")
-    for app, heading in APP_SECTIONS.items():
-        rules = find_source_section(geolocation_cn, heading)
+    for section, (heading, level) in SOURCE_SECTIONS.items():
+        rules = find_source_section(geolocation_cn, heading, level)
         if rules is None:
-            print(f"Warning: app section '{heading}' not found in source.")
+            print(f"Warning: source section '{heading}' not found in source.")
             continue
-        domains = extract_source_domains(rules)
-        print(f"  {app}: {len(domains)} domains")
-        sections.append((app, domains))
+        domains = extract_source_domains(rules, data)
+        print(f"  {section}: {len(domains)} domains")
+        sections.append((section, domains))
 
     output = Path(__file__).resolve().parent.parent / "cnSites.yaml"
     write_cn_sites(output, sections)
