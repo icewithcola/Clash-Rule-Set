@@ -1,57 +1,65 @@
 payload:
-# Google gemini
-  - 'gemini.google.com'
-  - 'aida.googleapis.com'
+  # Google Gemini and related AI APIs
+  - '+.gemini.google.com'
+  - '+.gemini.google'
   - 'ai.google.dev'
   - 'aistudio.google.com'
-  - 'generativelanguage.googleapis.com'
-  - '+.clients6.google.com'
   - 'makersuite.google.com'
-  # Google Cookie Store
-  # https://doi.org/10.1016/j.cose.2026.104850
-  - 'proactivebackend-pa.googleapis.com' 
-  - 'discover-pa.googleapis.com'
-  - 'android-context-data.googleapis.com'
-  - 'locationhistory-pa.googleapis.com'
-  - 'semanticlocation-pa.googleapis.com'
+  - 'aida.googleapis.com'
+  - 'generativelanguage.googleapis.com'
+  - 'proactivebackend-pa.googleapis.com'
+  - 'robinfrontend-pa.googleapis.com'
+  - 'webchannel-robinfrontend-pa.googleapis.com'
+  - 'alkalicore-pa.clients6.google.com'
+  - 'alkalimakersuite-pa.clients6.google.com'
+  - 'webchannel-alkalimakersuite-pa.clients6.google.com'
+  - 'gemini.gstatic.com'
 
-# Chatgpt
+  # ChatGPT, OpenAI API, Sora, and realtime voice
   - '+.openai.com'
   - '+.chatgpt.com'
-  - '+.hsforms.com'
+  - '+.sora.com'
   - '+.oaistatic.com'
+  - '+.oaistatsig.com'
   - '+.oaiusercontent.com'
+  - '+.chatgpt.livekit.cloud'
+  - '+.turn.livekit.cloud'
   - 'chat.openai.com.cdn.cloudflare.net'
   - 'd2iqxrrl6zjxc7.cloudfront.net'
   - 'openaiapi-site.azureedge.net'
+  - 'openaiassets.blob.core.windows.net'
   - 'openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net'
   - 'openaicomproductionae4b.blob.core.windows.net'
   - 'production-openaicom-storage.azureedge.net'
   - 'o33249.ingest.sentry.io'
   - 'openaicom.imgix.net'
 
-# Claude
+  # Claude
   - '+.anthropic.com'
   - '+.claude.ai'
   - '+.claude.com'
+  - '+.clau.de'
   - '+.claudeusercontent.com'
-  - '+.usefathom.com'
-  - '+.datadoghq.com'
+  - '+.claudemcpclient.com'
+  - '+.claudemcpcontent.com'
+  - 'servd-anthropic-website.b-cdn.net'
+  - 'browser-intake-datadoghq.com'
 
-# Apple Intelligence
+  # Apple Intelligence, Siri, and Private Cloud Compute. Apple documents the
+  # first six hosts at https://support.apple.com/101555.
   - 'guzzoni.apple.com'
   - '+.smoot.apple.com'
-  # Apple Intelligence
-  - 'apple-relay.*.*'
-  - 'apple-relay.*.*.*'
-  - 'gateway.icloud.com'
+  - 'apple-relay.apple.com'
+  - 'apple-relay.cloudflare.com'
+  - 'apple-relay.fastly-edge.com'
   - 'cp4.cloudflare.com'
   # Region Detection
   - 'gspe1-ssl.ls.apple.com'
   # Siri AI
   - 'api-siri-prod.apple.com'
 
-# cursor
-- '*.cursor.sh'
-- '*.*.cursor.sh'
-- '*.cursorapi.com'
+  # Cursor
+  - '+.cursor.com'
+  - '+.cursor.sh'
+  - '+.cursorapi.com'
+  - '+.cursor-cdn.com'

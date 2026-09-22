@@ -5,7 +5,7 @@ This repo holds my personal rule sets for clash. The format works with most clas
 | File Name | Behavior | Notes |
 |---|---|---|
 | `adskip.yaml` | domain | Ad-related domains that keep retrying. Skip-reject them to save power. |
-| `ai.yaml` | domain | AI services such as Gemini, OpenAI, Claude. |
+| `ai.yaml` | domain | AI services such as Gemini, OpenAI, Claude, Apple Intelligence/Siri, and Cursor. |
 | `bilibili.yaml` | domain | Bilibili main domains. |
 | `cnip6.yaml` | ipcidr | China IPv6 ranges. |
 | `cnSites.yaml` | domain | China sites. Auto-generated daily from v2fly domain list. |
@@ -48,4 +48,5 @@ Issues and pull requests are welcome. New rules and changes to current rules are
 - `cnSites.yaml`: [v2fly/domain-list-community](https://github.com/v2fly/domain-list-community), including mainland-local automobile, commerce, healthcare, public-transport, logistics, and service groups; filtered to domain rules only and skipping the `@!cn` tag.
 - `tailscale-*.yaml`: [Tailscale DERP map](https://controlplane.tailscale.com/derpmap/default).
 - `adskip.yaml`: a small hand-picked list of ad domains that keep reconnecting.
+- `ai.yaml`: service domains cross-checked with [MetaCubeX/meta-rules-dat](https://github.com/MetaCubeX/meta-rules-dat); Apple Intelligence and Siri hosts follow [Apple's enterprise network requirements](https://support.apple.com/101555).
 - `privacy.yaml`: auto-generated from [hagezi/dns-blocklists](https://github.com/hagezi/dns-blocklists) (currently the OPPO & Realme native tracker list). Add more upstream lists by editing the `URLS` array at the top of `scripts/generate_privacy.py`.
