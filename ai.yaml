@@ -46,6 +46,13 @@ payload:
   - 'gateway.icloud.com'
   - 'cp4.cloudflare.com'
   - 'gspe1-ssl.ls.apple.com'
+  - '*.apple-dns.net'
+  - 'mask-api.icloud.com'
+  - 'smoot.apple.com'
+  - 'ls.apple.com'
+  - 'mask-h2.icloud.com'
+  - 'mask.icloud.com'
+  - 'apps.mzstatic.com'
 
 # cursor
 - '*.cursor.sh'
