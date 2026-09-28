@@ -573,7 +573,7 @@ payload:
   - 'dhfs-vn.oppomobile.com'
   - 'dhfsf.oppomobile.com'
   - 'sea-log-rcv.vansound.com'
-  - 'h4g3z1-native.oppo-realme.web.app'
+  - 'h4g3z1-native-oppo-realme.web.app'
 
 # Region: https://gitlab.com/hagezi/mirror/-/raw/main/dns-blocklists/domains/native.xiaomi.txt
   - 'traffic-media.co.uk'
@@ -762,7 +762,7 @@ payload:
   - 'traffic-media.co'
   - 'imgg.traffic-media.co'
   - 'www.traffic-media.co'
-  - 'h4g3z1-native.xiaomi.web.app'
+  - 'h4g3z1-native-xiaomi.web.app'
   - 'ad.xiaomi.com'
   - 'api.ad.xiaomi.com'
   - 'cupid.ad.xiaomi.com'
