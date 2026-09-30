@@ -265,6 +265,7 @@ payload:
   - 'stg-data-in.ads.heytapmobi.com'
   - 'stg-data-sg.ads.heytapmobi.com'
   - 'uapi.ads.heytapmobi.com'
+  - 'apisnd.heytapmobi.com'
   - 'logforward.browser.heytapmobi.com'
   - 'stat.browser.heytapmobi.com'
   - 'api-cn.cdo.heytapmobi.com'
