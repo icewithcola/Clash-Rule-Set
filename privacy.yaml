@@ -328,6 +328,7 @@ payload:
   - 'cl-data-in.ads.heytapmobile.com'
   - 'cl-data-my.ads.heytapmobile.com'
   - 'cl-data-sg.ads.heytapmobile.com'
+  - 'cl-data-tw.ads.heytapmobile.com'
   - 'cl-data-vn.ads.heytapmobile.com'
   - 'sms-sg.ads.heytapmobile.com'
   - 'stg-data-f.ads.heytapmobile.com'
