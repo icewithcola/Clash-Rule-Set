@@ -45,7 +45,7 @@ Issues and pull requests are welcome. New rules and changes to current rules are
 - `feishu.yaml`: [Feishu help page (Chinese)](https://www.feishu.cn/hc/zh-CN/articles/360044683233)
 - `email.yaml`: [Cloudflare: SMTP ports](https://www.cloudflare.com/zh-cn/learning/email-security/smtp-port-25-587/)
 - `cnip6.yaml`: [blackmatrix7/ios_rule_script ChinaMax list](https://github.com/blackmatrix7/ios_rule_script/blob/master/rule/Surge/ChinaMax/README.md)
-- `cnSites.yaml`: [v2fly/domain-list-community](https://github.com/v2fly/domain-list-community), including mainland-local automobile, commerce, healthcare, public-transport, logistics, and service groups; filtered to domain rules only and skipping the `@!cn` tag.
+- `cnSites.yaml`: [v2fly/domain-list-community](https://github.com/v2fly/domain-list-community), including mainland-local banking, securities, funds, finance, insurance, education, scholarship, public services, utilities, telecom, automobile, commerce, healthcare, public-transport, logistics, and service groups; filtered to domain rules only and skipping the `@!cn` tag. Supplemental rules in the generator cover reported upstream gaps such as China Merchants Securities (`cmschina.com`, including `appstatic.cmschina.com`). Known global services in upstream CN categories, such as OpenLearning, are excluded locally.
 - `tailscale-*.yaml`: [Tailscale DERP map](https://controlplane.tailscale.com/derpmap/default).
 - `adskip.yaml`: a small hand-picked list of ad domains that keep reconnecting.
 - `ai.yaml`: service domains cross-checked with [MetaCubeX/meta-rules-dat](https://github.com/MetaCubeX/meta-rules-dat); Apple Intelligence and Siri hosts follow [Apple's enterprise network requirements](https://support.apple.com/101555).

@@ -8,6 +8,8 @@ the upstream geolocation-cn source file, including any lists referenced by an
 `full:` rules have no prefix (exact match). Entries tagged with the `@!cn`
 attribute (overseas-only) are dropped, any remaining attributes are stripped.
 Sections are separated by `# <TARGET>` comment headers.
+Locally maintained supplemental rules fill gaps in upstream categories.
+Known global services included in upstream CN groups are excluded locally.
 """
 import sys
 import urllib.error
@@ -36,11 +38,13 @@ TARGETS = [
     "category-automobile-cn",
     "category-bank-cn",
     "category-cdn-cn",
+    "category-education-cn",
     "category-food-cn",
     "category-logistics-cn",
     "category-media-cn",
     "category-netdisk-cn",
     "category-ntp-cn",
+    "category-securities-cn",
     "category-social-media-cn",
     
     # cloud services
@@ -51,16 +55,34 @@ TARGETS = [
     "cas",
     "cnki",
     "chaoxing",
-    "wanfang"
+    "wanfang",
+    "category-scholar-cn",
 ]
+
+# Keep reported mainland services covered until upstream includes them.
+SUPPLEMENTAL_RULES = {
+    "category-securities-cn": [
+        "domain:cmschina.com",  # 招商证券, including appstatic.cmschina.com
+    ],
+}
+
+# These global/overseas services lack an upstream @!cn tag.
+EXCLUDED_DOMAINS = {
+    "+.openlearning.com",
+    "+.sinopec-usa.com",
+}
 
 # Mainland-local groups that do not have a complete standalone `-cn` list.
 # Map the output section name to (upstream heading, heading level).
 SOURCE_SECTIONS = {
+    "local-finance": ("Bank & Finance & Insurance & Securities", 1),
     "local-commerce": ("E-commerce", 1),
     "local-healthcare": ("Healthcare", 1),
+    "public-services": ("Party and government offices & Public units", 1),
     "public-transportation": ("Public transportation", 1),
     "local-services": ("Services & Softwares", 1),
+    "local-utilities": ("State Owned Companies", 1),
+    "local-telecom": ("Telecommunication", 1),
 }
 
 
@@ -191,7 +213,7 @@ def write_cn_sites(path: Path, sections: list[tuple[str, list[str]]]) -> None:
                 f.write("\n")
             f.write(f"# {name}\n")
             for domain in domains:
-                if domain in seen:
+                if domain in seen or domain in EXCLUDED_DOMAINS:
                     continue
                 seen.add(domain)
                 f.write(f"  - '{domain}'\n")
@@ -208,7 +230,7 @@ def main() -> None:
         if rules is None:
             print(f"Warning: list '{target}' not found in source.")
             continue
-        domains = extract_domains(rules)
+        domains = extract_domains(rules + SUPPLEMENTAL_RULES.get(target, []))
         print(f"  {target}: {len(domains)} domains")
         sections.append((target, domains))
 
